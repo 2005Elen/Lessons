@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Lesson - {{ lesson.lesson_name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'category_list' %}">Categories</a>
+    </nav>
+    <div class="container mt-4">
+        <h1>Delete Lesson: {{ lesson.lesson_name }}</h1>
+
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> Are you sure you want to delete the lesson "{{ lesson.lesson_name }}"? This action cannot be undone.
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a class="btn btn-secondary" href="{% url 'lesson_detail' lesson.slug %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
